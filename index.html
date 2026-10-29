@@ -1,0 +1,2291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Büşra Akbaba | Mütercim Tercüman & İngilizce Öğretmeni</title>
+  
+  <!-- ==========================================================================
+       FONTLAR (Google Fonts: Playfair Display, Plus Jakarta Sans, Courier Prime)
+       Çevirmen ve edebiyat havası için klasik daktilo ve zarif serif fontlar.
+       ========================================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. CSS DEĞİŞKENLERİ (RENK PALETİ VE TİPOGRAFİ)
+       Renkleri veya fontları buradan kolayca özelleştirebilirsiniz.
+       ========================================================================== */
+    :root {
+      /* Krem, bej, kahve ve koyu gri tonları */
+      --color-cream: #FAF7F2;          /* Ana arkaplan: yumuşak sıcak krem */
+      --color-cream-dark: #F3ECE2;     /* İkincil arkaplan: bej kağıt dokusu tonu */
+      --color-beige-border: #E5DCD0;   /* Zarif bej sınır çizgileri */
+      --color-card-bg: #FFFFFF;        /* Kart arkaplanı: temiz beyaz */
+      
+      --color-text-main: #2A2523;      /* Ana metin: koyu kömür / espresso gri */
+      --color-text-muted: #6B625B;     /* İkincil metin: yumuşak taş grisi */
+      --color-text-light: #948A80;     /* Soluk detay metinleri */
+      
+      --color-coffee-accent: #7C533A;  /* Vurgu rengi: sıcak kahve tonu */
+      --color-coffee-dark: #583925;    /* Koyu kahve (hover ve başlıklar için) */
+      --color-coffee-soft: #F4ECE4;    /* Çok açık kahve rozet arka planı */
+      --color-typewriter-red: #A84134; /* Daktilo şeridi kırmızısı (ince vurgular) */
+
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-typewriter: 'Courier Prime', 'Courier New', monospace;
+
+      --transition-smooth: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-subtle: 0 4px 20px -2px rgba(42, 37, 35, 0.05);
+      --shadow-hover: 0 12px 30px -4px rgba(42, 37, 35, 0.1);
+      --container-max: 1040px;
+    }
+
+    /* ==========================================================================
+       2. TEMEL SIFIRLAMA VE GENEL AYARLAR
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--color-cream);
+      color: var(--color-text-main);
+      font-family: var(--font-sans);
+      line-height: 1.68;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      background-image: radial-gradient(rgba(124, 83, 58, 0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* ==========================================================================
+       3. ÇOKLU DİL (TR - EN) GEÇİŞ MEKANİZMASI
+       HTML içinde hem Türkçe hem İngilizce metinler yer alır.
+       CSS, seçilen dile göre doğru olanı gösterir, diğerini gizler.
+       ========================================================================== */
+    body[data-lang="tr"] .lang-en {
+      display: none !important;
+    }
+    body[data-lang="en"] .lang-tr {
+      display: none !important;
+    }
+
+    /* Kapsayıcı ve Tipografi */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--color-text-main);
+      font-family: var(--font-serif);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    p {
+      color: var(--color-text-muted);
+      font-size: 1.02rem;
+    }
+
+    a {
+      color: var(--color-coffee-accent);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    a:hover {
+      color: var(--color-coffee-dark);
+    }
+
+    /* ==========================================================================
+       4. ÜST MENÜ / HEADER (NAVBAR)
+       ========================================================================== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-beige-border);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .brand-logo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      letter-spacing: -0.01em;
+    }
+
+    .brand-subtitle {
+      font-family: var(--font-typewriter);
+      font-size: 0.76rem;
+      color: var(--color-coffee-accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      position: relative;
+      padding: 0.25rem 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 1.5px;
+      background-color: var(--color-coffee-accent);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover {
+      color: var(--color-coffee-dark);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Sağ taraftaki kontroller: Dil Değiştirici ve Daktilo Sesi Düğmesi */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Dil Seçim Düğmesi (TR / EN) */
+    .lang-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--color-cream-dark);
+      border: 1px solid var(--color-beige-border);
+      padding: 0.25rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: var(--font-typewriter);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      transition: var(--transition-smooth);
+    }
+
+    .lang-option {
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      transition: var(--transition-smooth);
+    }
+
+    .lang-option.active {
+      background-color: var(--color-coffee-accent);
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(124, 83, 58, 0.25);
+    }
+
+    /* Daktilo Sesi Açma/Kapama Düğmesi */
+    .sound-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background-color: var(--color-cream-dark);
+      border: 1px solid var(--color-beige-border);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-size: 0.95rem;
+    }
+
+    .sound-toggle-btn:hover {
+      background-color: var(--color-card-bg);
+      color: var(--color-coffee-accent);
+      border-color: var(--color-coffee-accent);
+      transform: translateY(-1px);
+    }
+
+    .sound-toggle-btn.muted {
+      opacity: 0.6;
+    }
+
+    /* Mobil Menü Butonu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      color: var(--color-text-main);
+    }
+
+    /* ==========================================================================
+       5. HERO / GİRİŞ BÖLÜMÜ & DAKTİLO EFEKTİ
+       ========================================================================== */
+    .hero-section {
+      padding: 4.5rem 0 3.5rem;
+      position: relative;
+    }
+
+    .hero-badge-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--color-coffee-soft);
+      border: 1px solid rgba(124, 83, 58, 0.2);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-family: var(--font-typewriter);
+      font-size: 0.82rem;
+      color: var(--color-coffee-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--color-coffee-accent);
+      display: inline-block;
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title span.italic-accent {
+      font-style: italic;
+      color: var(--color-coffee-accent);
+      font-weight: 500;
+    }
+
+    /* Daktilo Kağıdı Görünümünde Özel Kutu */
+    .typewriter-manuscript-card {
+      background-color: var(--color-card-bg);
+      border: 1px solid var(--color-beige-border);
+      border-left: 4px solid var(--color-typewriter-red); /* Daktilo marj çizgisi */
+      border-radius: 6px;
+      padding: 1.75rem 2rem;
+      box-shadow: var(--shadow-subtle);
+      margin: 1.5rem 0 2.2rem;
+      position: relative;
+      background-image: linear-gradient(rgba(243, 236, 226, 0.25) 1px, transparent 1px);
+      background-size: 100% 1.8rem; /* Çizgili not kağıdı hissi */
+    }
+
+    .manuscript-tag {
+      font-family: var(--font-typewriter);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-typewriter-red);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .manuscript-tag::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background-color: rgba(168, 65, 52, 0.2);
+    }
+
+    .typewriter-quote {
+      font-family: var(--font-typewriter);
+      font-size: 1.12rem;
+      color: var(--color-text-main);
+      line-height: 1.75;
+      min-height: 3.5rem;
+    }
+
+    /* Daktilo yanıp sönen imleci */
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.15em;
+      background-color: var(--color-typewriter-red);
+      vertical-align: -0.15em;
+      margin-left: 2px;
+      animation: blinkCursor 0.9s infinite;
+    }
+
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Çalışma Dilleri Rozetleri */
+    .hero-languages {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .languages-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      font-family: var(--font-typewriter);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .lang-pill {
+      background-color: var(--color-cream-dark);
+      border: 1px solid var(--color-beige-border);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      color: var(--color-text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .lang-pill strong {
+      color: var(--color-coffee-accent);
+      font-weight: 600;
+    }
+
+    /* Hero Eylem Butonları */
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.6rem;
+      border-radius: 6px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background-color: var(--color-coffee-accent);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(124, 83, 58, 0.2);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-coffee-dark);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(88, 57, 37, 0.25);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-text-main);
+      border-color: var(--color-beige-border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--color-cream-dark);
+      border-color: var(--color-coffee-accent);
+      color: var(--color-coffee-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       6. BÖLÜM BAŞLIKLARI VE YAPISI
+       ========================================================================== */
+    .section {
+      padding: 4.5rem 0;
+      border-top: 1px solid var(--color-beige-border);
+    }
+
+    .section-header {
+      margin-bottom: 2.75rem;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-typewriter);
+      font-size: 0.82rem;
+      color: var(--color-coffee-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-eyebrow::before {
+      content: '//';
+      color: var(--color-typewriter-red);
+      font-weight: bold;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      max-width: 650px;
+      color: var(--color-text-muted);
+    }
+
+    /* ==========================================================================
+       7. HAKKIMDA BÖLÜMÜ
+       ========================================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    /* Sol tarafta estetik daktilo / fotoğraf kartı */
+    .about-card-visual {
+      background-color: var(--color-card-bg);
+      border: 1px solid var(--color-beige-border);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow-subtle);
+      position: relative;
+      text-align: center;
+    }
+
+    .about-avatar-placeholder {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      background-color: var(--color-cream-dark);
+      border: 2px dashed var(--color-coffee-accent);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-muted);
+      padding: 1rem;
+      font-size: 0.8rem;
+      text-align: center;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .about-avatar-placeholder svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--color-coffee-accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .about-details-list {
+      list-style: none;
+      text-align: left;
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--color-beige-border);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .about-details-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .about-details-list .label {
+      color: var(--color-text-light);
+      font-family: var(--font-typewriter);
+    }
+
+    .about-details-list .value {
+      font-weight: 500;
+      color: var(--color-text-main);
+      text-align: right;
+    }
+
+    /* Sağ tarafta detaylı metin ve felsefe */
+    .about-narrative {
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: var(--color-text-main);
+    }
+
+    .about-quote-box {
+      margin-top: 2rem;
+      padding: 1.5rem 1.75rem;
+      background-color: var(--color-cream-dark);
+      border-left: 3px solid var(--color-coffee-accent);
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--color-coffee-dark);
+      position: relative;
+    }
+
+    /* ==========================================================================
+       8. PROJELERİM / ÇALIŞMALARIM BÖLÜMÜ
+       ========================================================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background-color: var(--color-card-bg);
+      border: 1px solid var(--color-beige-border);
+      border-radius: 8px;
+      padding: 2.25rem;
+      box-shadow: var(--shadow-subtle);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(124, 83, 58, 0.35);
+    }
+
+    .project-number {
+      font-family: var(--font-typewriter);
+      font-size: 0.82rem;
+      color: var(--color-coffee-accent);
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    .project-title {
+      font-size: 1.45rem;
+      margin-bottom: 1rem;
+      color: var(--color-text-main);
+    }
+
+    .project-desc {
+      color: var(--color-text-muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tag {
+      font-size: 0.78rem;
+      font-family: var(--font-typewriter);
+      background-color: var(--color-cream);
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-beige-border);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .project-footer {
+      border-top: 1px solid var(--color-beige-border);
+      padding-top: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.88rem;
+    }
+
+    .placeholder-note {
+      font-family: var(--font-typewriter);
+      font-size: 0.8rem;
+      color: var(--color-text-light);
+      font-style: italic;
+    }
+
+    /* ==========================================================================
+       9. BECERİLERİM BÖLÜMÜ
+       ========================================================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background-color: var(--color-card-bg);
+      border: 1px solid var(--color-beige-border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-subtle);
+      transition: var(--transition-smooth);
+    }
+
+    .skill-card:hover {
+      border-color: var(--color-coffee-accent);
+      transform: translateY(-2px);
+    }
+
+    .skill-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
+      background-color: var(--color-coffee-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      color: var(--color-coffee-accent);
+    }
+
+    .skill-category-title {
+      font-size: 1.18rem;
+      margin-bottom: 0.75rem;
+      color: var(--color-text-main);
+    }
+
+    .skill-items-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.94rem;
+      color: var(--color-text-muted);
+    }
+
+    .skill-bullet {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: var(--color-coffee-accent);
+      display: inline-block;
+    }
+
+    /* ==========================================================================
+       10. DENEYİM BÖLÜMÜ (ZAMAN ÇİZELGESİ)
+       ========================================================================== */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 7px;
+      width: 2px;
+      background-color: var(--color-beige-border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.75rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2rem;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--color-card-bg);
+      border: 3px solid var(--color-coffee-accent);
+      transition: var(--transition-smooth);
+    }
+
+    .timeline-item:hover .timeline-dot {
+      background-color: var(--color-coffee-accent);
+      transform: scale(1.15);
+    }
+
+    .timeline-content {
+      background-color: var(--color-card-bg);
+      border: 1px solid var(--color-beige-border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .timeline-badge {
+      display: inline-block;
+      font-family: var(--font-typewriter);
+      font-size: 0.78rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      background-color: var(--color-coffee-soft);
+      color: var(--color-coffee-dark);
+      margin-bottom: 0.65rem;
+    }
+
+    .timeline-role {
+      font-size: 1.3rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-company {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--color-coffee-accent);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .timeline-desc {
+      font-size: 0.94rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+
+    /* ==========================================================================
+       11. İLGİ ALANLARI / HOBİLER BÖLÜMÜ
+       ========================================================================== */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .hobby-card {
+      background-color: var(--color-card-bg);
+      border: 1px solid var(--color-beige-border);
+      border-radius: 8px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+    }
+
+    .hobby-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-coffee-accent);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .hobby-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: var(--color-cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-coffee-accent);
+      transition: var(--transition-smooth);
+    }
+
+    .hobby-card:hover .hobby-icon {
+      background-color: var(--color-coffee-soft);
+      color: var(--color-coffee-dark);
+      transform: scale(1.08);
+    }
+
+    .hobby-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-text-main);
+    }
+
+    /* ==========================================================================
+       12. ÖZEL DOKUNUŞ: İNTERAKTİF DAKTİLO MASASI (THE TRANSLATOR'S TYPEWRITER)
+       Ziyaretçinin daktilo tuşlarına basarak yazı yazabildiği interaktif alan.
+       ========================================================================== */
+    .typewriter-interactive-desk {
+      background-color: var(--color-cream-dark);
+      border: 1px solid var(--color-beige-border);
+      border-radius: 10px;
+      padding: 2.25rem;
+      margin: 3.5rem 0;
+      position: relative;
+    }
+
+    .desk-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .desk-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--color-coffee-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .desk-sound-status {
+      font-family: var(--font-typewriter);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .interactive-sheet {
+      background-color: #FFFFFF;
+      border: 1px solid var(--color-beige-border);
+      border-left: 3px solid var(--color-typewriter-red);
+      border-radius: 4px;
+      padding: 1.5rem;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .interactive-typewriter-input {
+      width: 100%;
+      min-height: 80px;
+      background: transparent;
+      border: none;
+      outline: none;
+      resize: vertical;
+      font-family: var(--font-typewriter);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--color-text-main);
+    }
+
+    .interactive-typewriter-input::placeholder {
+      color: var(--color-text-light);
+      font-style: italic;
+    }
+
+    .desk-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .btn-sm {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.82rem;
+      font-family: var(--font-typewriter);
+    }
+
+    /* ==========================================================================
+       13. İLETİŞİM BÖLÜMÜ
+       ========================================================================== */
+    .contact-card-main {
+      background-color: var(--color-card-bg);
+      border: 1px solid var(--color-beige-border);
+      border-radius: 10px;
+      padding: 3rem;
+      box-shadow: var(--shadow-subtle);
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .contact-icon-large {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      background-color: var(--color-coffee-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-coffee-accent);
+    }
+
+    .contact-title {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-intro {
+      max-width: 540px;
+      margin: 0 auto 2rem;
+      font-size: 1.05rem;
+    }
+
+    /* E-posta Kopyalama Kutusu */
+    .email-copy-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background-color: var(--color-cream);
+      border: 1px solid var(--color-beige-border);
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      max-width: 100%;
+    }
+
+    .email-text {
+      font-family: var(--font-typewriter);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-coffee-dark);
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      background-color: var(--color-card-bg);
+      border: 1px solid var(--color-beige-border);
+      color: var(--color-text-main);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: var(--transition-smooth);
+    }
+
+    .copy-btn:hover {
+      border-color: var(--color-coffee-accent);
+      color: var(--color-coffee-accent);
+    }
+
+    /* Eksik Bilgi Yer Tutucuları / Sosyal Bağlantılar */
+    .contact-placeholders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--color-beige-border);
+      padding-top: 2rem;
+      text-align: left;
+    }
+
+    .placeholder-item {
+      padding: 1rem;
+      background-color: var(--color-cream);
+      border: 1px dashed var(--color-beige-border);
+      border-radius: 6px;
+    }
+
+    .placeholder-item .title {
+      font-size: 0.78rem;
+      font-family: var(--font-typewriter);
+      text-transform: uppercase;
+      color: var(--color-coffee-accent);
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+
+    .placeholder-item .slot {
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      font-style: italic;
+    }
+
+    /* Toast Bildirimi (Kopyalandı Mesajı) */
+    .toast-notification {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--color-coffee-dark);
+      color: #FFFFFF;
+      padding: 0.75rem 1.4rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toast-notification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       14. ALT BİLGİ (FOOTER)
+       ========================================================================== */
+    .footer {
+      background-color: var(--color-cream-dark);
+      border-top: 1px solid var(--color-beige-border);
+      padding: 2.5rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--color-coffee-dark);
+    }
+
+    .footer-note {
+      font-family: var(--font-typewriter);
+      font-size: 0.82rem;
+      color: var(--color-text-light);
+    }
+
+    /* ==========================================================================
+       15. MOBİL VE TABLET UYUMLULUK (RESPONSIVE)
+       ========================================================================== */
+    @media (max-width: 860px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .nav-menu {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .mobile-menu-open .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background-color: var(--color-cream);
+        border-bottom: 1px solid var(--color-beige-border);
+        padding: 1.5rem;
+        gap: 1.2rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-section {
+        padding: 2.5rem 0 2rem;
+      }
+      .typewriter-manuscript-card {
+        padding: 1.25rem 1.25rem;
+      }
+      .contact-card-main {
+        padding: 2rem 1.25rem;
+      }
+      .email-copy-box {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+      }
+      .timeline {
+        padding-left: 1.5rem;
+      }
+      .timeline-dot {
+        left: -1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body data-lang="tr">
+
+  <!-- ==========================================================================
+       HEADER / ÜST DOLAŞIM ÇUBUĞU
+       Logo, Menü, TR-EN Dil Butonu ve Daktilo Sesi Anahtarı
+       ========================================================================== -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav-wrapper">
+        
+        <!-- Logo / İsim -->
+        <a href="#hero" class="brand-logo" title="Büşra Akbaba Ana Sayfa">
+          <span class="brand-name">Büşra Akbaba</span>
+          <span class="brand-subtitle lang-tr">Tercüman & Dil Eğitmeni</span>
+          <span class="brand-subtitle lang-en">Translator & Language Educator</span>
+        </a>
+
+        <!-- Menü Bağlantıları -->
+        <ul class="nav-menu" id="navMenu">
+          <li>
+            <a href="#about" class="nav-link">
+              <span class="lang-tr">Hakkımda</span>
+              <span class="lang-en">About</span>
+            </a>
+          </li>
+          <li>
+            <a href="#projects" class="nav-link">
+              <span class="lang-tr">Çalışmalarım</span>
+              <span class="lang-en">Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="#skills" class="nav-link">
+              <span class="lang-tr">Becerilerim</span>
+              <span class="lang-en">Skills</span>
+            </a>
+          </li>
+          <li>
+            <a href="#experience" class="nav-link">
+              <span class="lang-tr">Deneyim</span>
+              <span class="lang-en">Experience</span>
+            </a>
+          </li>
+          <li>
+            <a href="#hobbies" class="nav-link">
+              <span class="lang-tr">İlgi Alanları</span>
+              <span class="lang-en">Interests</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="nav-link">
+              <span class="lang-tr">İletişim</span>
+              <span class="lang-en">Contact</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Aksiyon Düğmeleri: Dil Değiştirici ve Daktilo Sesi -->
+        <div class="header-actions">
+          
+          <!-- Daktilo Sesi Aç/Kapat Butonu -->
+          <button id="soundToggleBtn" class="sound-toggle-btn" title="Daktilo Sesini Aç / Kapat" aria-label="Daktilo Sesi">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+          </button>
+
+          <!-- TR - EN Geçiş Düğmesi -->
+          <button id="langToggleBtn" class="lang-toggle-btn" aria-label="Dili Değiştir / Switch Language">
+            <span class="lang-option active" id="btnOptTr">TR</span>
+            <span class="lang-option" id="btnOptEn">EN</span>
+          </button>
+
+          <!-- Mobil Menü Aç/Kapat Butonu -->
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menüyü Aç">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         BÖLÜM 1: HERO / GİRİŞ & DAKTİLO VURGUSU
+         ========================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        
+        <!-- Üniversite & Bölüm Rozeti -->
+        <div class="hero-badge-container">
+          <span class="hero-badge-dot"></span>
+          <span class="lang-tr">Yeni Yüzyıl Üniversitesi • İngilizce Mütercim ve Tercümanlık • 4. Sınıf</span>
+          <span class="lang-en">Yeni Yüzyıl University • English Translation & Interpreting • Senior</span>
+        </div>
+
+        <!-- Ana Karşılama Başlığı -->
+        <h1 class="hero-title">
+          <span class="lang-tr">Kelimelerin, anlamın ve <br><span class="italic-accent">kültürlerin kesişiminde.</span></span>
+          <span class="lang-en">At the intersection of words, <br><span class="italic-accent">meaning, and cultures.</span></span>
+        </h1>
+
+        <!-- Daktilo Tarzı Elyazması / Özeti Gösteren Kart -->
+        <div class="typewriter-manuscript-card">
+          <div class="manuscript-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="4 7 4 4 20 4 20 7"></polyline>
+              <line x1="9" y1="20" x2="15" y2="20"></line>
+              <line x1="12" y1="4" x2="12" y2="20"></line>
+            </svg>
+            <span class="lang-tr">DAKTİLO NOTU // KİŞİSEL BİLDİRİ</span>
+            <span class="lang-en">TYPEWRITER NOTE // STATEMENT</span>
+          </div>
+
+          <!-- Canlı Daktilo Yazı Efekti -->
+          <div class="typewriter-quote" id="typewriterTarget">
+            <!-- JavaScript buraya karakter karakter yazacaktır -->
+          </div>
+        </div>
+
+        <!-- Çalışma Dilleri -->
+        <div class="hero-languages">
+          <span class="languages-label lang-tr">Çalışma Dillerim:</span>
+          <span class="languages-label lang-en">Working Languages:</span>
+
+          <span class="lang-pill">
+            <span>🇹🇷</span>
+            <span class="lang-tr"><strong>Türkçe</strong> (Anadil)</span>
+            <span class="lang-en"><strong>Turkish</strong> (Native)</span>
+          </span>
+
+          <span class="lang-pill">
+            <span>🇬🇧</span>
+            <span class="lang-tr"><strong>İngilizce</strong> (İleri Seviye)</span>
+            <span class="lang-en"><strong>English</strong> (Advanced)</span>
+          </span>
+
+          <span class="lang-pill">
+            <span>🇪🇸</span>
+            <span class="lang-tr"><strong>İspanyolca</strong> (Başlangıç)</span>
+            <span class="lang-en"><strong>Spanish</strong> (Beginner)</span>
+          </span>
+        </div>
+
+        <!-- Eylem Butonları -->
+        <div class="hero-cta-group">
+          <a href="#contact" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span class="lang-tr">İletişime Geç</span>
+            <span class="lang-en">Get in Touch</span>
+          </a>
+
+          <a href="#projects" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            <span class="lang-tr">Çalışmalarımı İncele</span>
+            <span class="lang-en">View Works</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 2: HAKKIMDA
+         ========================================================================== -->
+    <section class="section" id="about">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="lang-tr">Beni Tanıyın</span>
+            <span class="lang-en">Get to Know Me</span>
+          </div>
+          <h2 class="section-title">
+            <span class="lang-tr">Hakkımda</span>
+            <span class="lang-en">About Me</span>
+          </h2>
+        </div>
+
+        <div class="about-grid">
+          
+          <!-- Sol Kart: Profil / Bilgi Özeti -->
+          <div class="about-card-visual">
+            <div class="about-avatar-placeholder" title="Profil Fotoğrafı Alanı">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span class="lang-tr">[Profil Fotoğrafı Buraya Eklenebilir]</span>
+              <span class="lang-en">[Profile Photo Placeholder]</span>
+            </div>
+
+            <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Büşra Akbaba</h3>
+            <p style="font-size: 0.88rem; color: var(--color-coffee-accent); font-family: var(--font-typewriter);">
+              <span class="lang-tr">Tercüman & İngilizce Öğretmeni</span>
+              <span class="lang-en">Translator & English Teacher</span>
+            </p>
+
+            <ul class="about-details-list">
+              <li>
+                <span class="label lang-tr">Okul:</span>
+                <span class="label lang-en">University:</span>
+                <span class="value">Yeni Yüzyıl Üni.</span>
+              </li>
+              <li>
+                <span class="label lang-tr">Bölüm:</span>
+                <span class="label lang-en">Major:</span>
+                <span class="value lang-tr">İng. Mütercim ve Tercümanlık</span>
+                <span class="value lang-en">English Translation & Int.</span>
+              </li>
+              <li>
+                <span class="label lang-tr">Derece / Sınıf:</span>
+                <span class="label lang-en">Year:</span>
+                <span class="value lang-tr">4. Sınıf (Son Sınıf)</span>
+                <span class="value lang-en">Senior (4th Year)</span>
+              </li>
+              <li>
+                <span class="label lang-tr">Konum:</span>
+                <span class="label lang-en">Location:</span>
+                <span class="value">[buraya ekle]</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Sağ Metin: Kullanıcının Kendi İfadeleri -->
+          <div>
+            <div class="about-narrative">
+              <p class="lang-tr" style="margin-bottom: 1.25rem;">
+                Dillere ve farklı kültürlere duyduğum ilgi, İngilizce Mütercim ve Tercümanlık bölümünü seçmemde etkili oldu. Çevirinin yalnızca kelimeleri değil, anlamı ve kültürü de aktarmak olduğunu düşünüyorum.
+              </p>
+              <p class="lang-en" style="margin-bottom: 1.25rem;">
+                My passion for languages and diverse cultures played a pivotal role in my decision to study English Translation and Interpreting. I believe that translation is never merely about words, but about conveying profound meaning and cultural essence.
+              </p>
+
+              <p class="lang-tr" style="margin-bottom: 1.25rem;">
+                İngilizce öğretmeni olarak dil öğrenme ve öğretme süreçlerinde yer almaktan keyif alıyorum. Gelecekte çeviri, dil teknolojileri ve eğitim alanlarında kendimi geliştirerek bu alanları bir araya getiren projelerde yer almayı hedefliyorum.
+              </p>
+              <p class="lang-en" style="margin-bottom: 1.25rem;">
+                As an English teacher, I truly take pleasure in actively participating in both learning and teaching journeys. In the future, I aim to continuously advance in translation, language technologies, and education, leading projects that seamlessly bridge these disciplines.
+              </p>
+            </div>
+
+            <div class="about-quote-box">
+              <span class="lang-tr">
+                “Çeviri bir dilden diğerine kelimeleri taşımak değil; bir düşünce dünyasını başka bir kültürün ikliminde yeniden var etmektir.”
+              </span>
+              <span class="lang-en">
+                “Translation is not carrying words from one tongue to another; it is recreating a realm of thought within the climate of another culture.”
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 3: PROJELERİM / ÇALIŞMALARIM
+         ========================================================================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="lang-tr">Portfolyo & Üretim</span>
+            <span class="lang-en">Portfolio & Work</span>
+          </div>
+          <h2 class="section-title">
+            <span class="lang-tr">Projelerim ve Çalışmalarım</span>
+            <span class="lang-en">Projects & Studies</span>
+          </h2>
+          <p class="section-desc lang-tr">
+            Çeviribilim ve dil pedagojisinin kesişiminde geliştirdiğim temel çalışmalarım.
+          </p>
+          <p class="section-desc lang-en">
+            Core studies and initiatives developed at the crossroads of translation studies and pedagogy.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          
+          <!-- Proje 1: İngilizce-Türkçe Çeviri Çalışmaları -->
+          <div class="project-card">
+            <div>
+              <span class="project-number">PROJECT // 01</span>
+              <h3 class="project-title lang-tr">İngilizce-Türkçe Çeviri Çalışmaları</h3>
+              <h3 class="project-title lang-en">English-Turkish Translation Studies</h3>
+
+              <div class="project-tags">
+                <span class="project-tag">EN ➔ TR</span>
+                <span class="project-tag lang-tr">Bağlamsal Çeviri</span>
+                <span class="project-tag lang-en">Contextual Translation</span>
+                <span class="project-tag lang-tr">Kültürel Aktarım</span>
+                <span class="project-tag lang-en">Cultural Adaptation</span>
+                <span class="project-tag lang-tr">Doğal Anlatım</span>
+                <span class="project-tag lang-en">Natural Phrasing</span>
+              </div>
+
+              <p class="project-desc lang-tr">
+                İngilizce ve Türkçe arasındaki anlam ve ifade farklılıklarını inceleyerek çeviri becerilerimi geliştirmeye odaklanıyorum. Çeviri sürecinde bağlamı, doğal anlatımı ve kültürel unsurları dikkate alıyorum.
+              </p>
+              <p class="project-desc lang-en">
+                Focusing on honing my translation proficiency by scrutinizing nuanced differences in meaning and expression between English and Turkish. Giving paramount importance to context, natural tone, and cultural subtleties throughout the process.
+              </p>
+            </div>
+
+            <div class="project-footer">
+              <span class="placeholder-note lang-tr">[Örnek Çeviri Dosyası / Detay Bağlantısı: buraya ekle]</span>
+              <span class="placeholder-note lang-en">[Sample Translation Document / Link: add here]</span>
+              
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-coffee-accent); flex-shrink: 0;">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Proje 2: İngilizce Öğretim Materyalleri -->
+          <div class="project-card">
+            <div>
+              <span class="project-number">PROJECT // 02</span>
+              <h3 class="project-title lang-tr">İngilizce Öğretim Materyalleri</h3>
+              <h3 class="project-title lang-en">English Teaching Materials</h3>
+
+              <div class="project-tags">
+                <span class="project-tag lang-tr">Öğretim Materyali</span>
+                <span class="project-tag lang-en">Instructional Material</span>
+                <span class="project-tag lang-tr">Etkinlik Tasarımı</span>
+                <span class="project-tag lang-en">Activity Design</span>
+                <span class="project-tag">Canva</span>
+                <span class="project-tag lang-tr">Pedagoji</span>
+                <span class="project-tag lang-en">Pedagogy</span>
+              </div>
+
+              <p class="project-desc lang-tr">
+                İngilizce öğrenme sürecini daha anlaşılır ve ilgi çekici hâle getirmek amacıyla ders materyalleri ve öğrenme etkinlikleri üzerinde çalışıyorum. Öğrencilerin dil becerilerini geliştirmelerini destekleyen, seviyelerine uygun içerikler hazırlamaya önem veriyorum.
+              </p>
+              <p class="project-desc lang-en">
+                Developing innovative instructional materials and interactive learning exercises aimed at making the English acquisition process engaging and intuitive. Prioritizing level-tailored content that reinforces students' communication skills.
+              </p>
+            </div>
+
+            <div class="project-footer">
+              <span class="placeholder-note lang-tr">[Örnek Materyal / PDF Bağlantısı: buraya ekle]</span>
+              <span class="placeholder-note lang-en">[Sample Material / PDF Link: add here]</span>
+              
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-coffee-accent); flex-shrink: 0;">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 4: BECERİLERİM
+         ========================================================================== -->
+    <section class="section" id="skills">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="lang-tr">Yetkinlikler</span>
+            <span class="lang-en">Competencies</span>
+          </div>
+          <h2 class="section-title">
+            <span class="lang-tr">Becerilerim</span>
+            <span class="lang-en">My Skills</span>
+          </h2>
+          <p class="section-desc lang-tr">
+            Çeviri teknolojileri, yabancı dil eğitimi ve içerik üretimi alanlarındaki teknik ve pedagojik becerilerim.
+          </p>
+          <p class="section-desc lang-en">
+            Technical and pedagogical competencies across translation technologies, language instruction, and content development.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          
+          <!-- Beceri Kartı 1: CAT & Çeviri Teknolojileri -->
+          <div class="skill-card">
+            <div class="skill-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="skill-category-title lang-tr">Çeviri Araçları (CAT)</h3>
+            <h3 class="skill-category-title lang-en">CAT & Translation Tools</h3>
+            <ul class="skill-items-list">
+              <li class="skill-item">
+                <span class="skill-bullet"></span>
+                <span><strong>SmartCat</strong> Kullanımı</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-bullet"></span>
+                <span><strong>SDL Trados</strong> Kullanımı</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Beceri Kartı 2: Dil Eğitimi & Pedagoji -->
+          <div class="skill-card">
+            <div class="skill-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <h3 class="skill-category-title lang-tr">Dil Eğitimi & Pedagoji</h3>
+            <h3 class="skill-category-title lang-en">Language Pedagogy</h3>
+            <ul class="skill-items-list">
+              <li class="skill-item">
+                <span class="skill-bullet"></span>
+                <span class="lang-tr">İngilizce Dil Bilgisi & Öğretimi</span>
+                <span class="lang-en">English Grammar & Pedagogy</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-bullet"></span>
+                <span class="lang-tr">Eğitim Materyali Hazırlama</span>
+                <span class="lang-en">Curriculum & Material Creation</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Beceri Kartı 3: Dil Teknolojileri & Yapay Zekâ -->
+          <div class="skill-card">
+            <div class="skill-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+            <h3 class="skill-category-title lang-tr">Teknoloji & Yapay Zekâ</h3>
+            <h3 class="skill-category-title lang-en">Tech & AI Tools</h3>
+            <ul class="skill-items-list">
+              <li class="skill-item">
+                <span class="skill-bullet"></span>
+                <span class="lang-tr">Dil Teknolojilerine İlgi & Takip</span>
+                <span class="lang-en">Language Tech Exploration</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-bullet"></span>
+                <span class="lang-tr">Yapay Zekâ Destekli Çeviri Araçları</span>
+                <span class="lang-en">AI-Assisted Translation Workflows</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Beceri Kartı 4: Tasarım & Görsel İçerik -->
+          <div class="skill-card">
+            <div class="skill-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="12 8 8 12 12 16 16 12 12 8"></polygon>
+              </svg>
+            </div>
+            <h3 class="skill-category-title lang-tr">Görsel Tasarım</h3>
+            <h3 class="skill-category-title lang-en">Visual Design</h3>
+            <ul class="skill-items-list">
+              <li class="skill-item">
+                <span class="skill-bullet"></span>
+                <span><strong>Canva</strong> (Ders & Sunum Materyalleri)</span>
+              </li>
+              <li class="skill-item">
+                <span class="skill-bullet"></span>
+                <span class="lang-tr">İnteraktif Çalışma Kağıtları</span>
+                <span class="lang-en">Interactive Worksheets</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 5: DENEYİM (ZAMAN ÇİZELGESİ)
+         ========================================================================== -->
+    <section class="section" id="experience">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="lang-tr">Kariyer Yolculuğu</span>
+            <span class="lang-en">Career Path</span>
+          </div>
+          <h2 class="section-title">
+            <span class="lang-tr">Deneyimlerim</span>
+            <span class="lang-en">Experience</span>
+          </h2>
+        </div>
+
+        <div class="timeline">
+          
+          <!-- Deneyim 1: Sefaköy Pratik Hafıza -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-badge lang-tr">Aktif / Devam Ediyor</span>
+              <span class="timeline-badge lang-en">Active / Ongoing</span>
+              
+              <h3 class="timeline-role lang-tr">İngilizce Öğretmeni</h3>
+              <h3 class="timeline-role lang-en">English Teacher</h3>
+
+              <div class="timeline-company">Sefaköy Pratik Hafıza Eğitim Kurumu</div>
+
+              <p class="timeline-desc lang-tr">
+                Öğrencilerin dil kazanımlarını destekleyen, ders içerikleri ve seviyelerine uygun özel öğretim materyalleri hazırlayarak aktif İngilizce öğretmenliği görevini sürdürmekteyim.
+              </p>
+              <p class="timeline-desc lang-en">
+                Actively delivering English language instruction, structuring comprehensive lesson materials, and facilitating engaging learning experiences tailored to students' developmental stages.
+              </p>
+              
+              <div style="margin-top: 0.75rem;">
+                <span class="placeholder-note lang-tr">[Başlangıç Tarihi: buraya ekle]</span>
+                <span class="placeholder-note lang-en">[Start Date: add here]</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deneyim 2: Beylikdüzü SESA Tercüme -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-badge lang-tr">Staj</span>
+              <span class="timeline-badge lang-en">Internship</span>
+
+              <h3 class="timeline-role lang-tr">Stajyer Çevirmen</h3>
+              <h3 class="timeline-role lang-en">Translation Intern</h3>
+
+              <div class="timeline-company">Beylikdüzü SESA Tercüme</div>
+
+              <p class="timeline-desc lang-tr">
+                Profesyonel çeviri bürosu ortamında yazılı çeviri süreçlerini, terminoloji yönetimini ve CAT araçlarının iş akışlarındaki uygulanışını deneyimleme fırsatı.
+              </p>
+              <p class="timeline-desc lang-en">
+                Experienced professional translation office workflows, terminology management, and practical application of CAT tools in commercial translation projects.
+              </p>
+
+              <div style="margin-top: 0.75rem;">
+                <span class="placeholder-note lang-tr">[Staj Dönemi / Tarih: buraya ekle]</span>
+                <span class="placeholder-note lang-en">[Internship Term / Date: add here]</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 6: İLGİ ALANLARIM & HOBİLERİM
+         ========================================================================== -->
+    <section class="section" id="hobbies">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="lang-tr">Dünyam & İlgi Alanlarım</span>
+            <span class="lang-en">Interests & Hobbies</span>
+          </div>
+          <h2 class="section-title">
+            <span class="lang-tr">İlgi Alanlarım ve Hobilerim</span>
+            <span class="lang-en">Interests & Hobbies</span>
+          </h2>
+          <p class="section-desc lang-tr">
+            Bana ilham veren, ufkumu genişleten ve çalışma tutkumu besleyen uğraşlarım.
+          </p>
+          <p class="section-desc lang-en">
+            Pursuits that inspire me, broaden my horizons, and nourish my passion for learning.
+          </p>
+        </div>
+
+        <div class="hobbies-grid">
+          
+          <!-- Hobi 1: Okuma -->
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </div>
+            <div class="hobby-title lang-tr">Okuma</div>
+            <div class="hobby-title lang-en">Reading</div>
+          </div>
+
+          <!-- Hobi 2: Çeviri -->
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <div class="hobby-title lang-tr">Çeviri</div>
+            <div class="hobby-title lang-en">Translation</div>
+          </div>
+
+          <!-- Hobi 3: İngilizce Öğretimi -->
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="hobby-title lang-tr">İngilizce Öğretimi</div>
+            <div class="hobby-title lang-en">Language Teaching</div>
+          </div>
+
+          <!-- Hobi 4: Seyahat & Gezme -->
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+            </div>
+            <div class="hobby-title lang-tr">Seyahat ve Gezme</div>
+            <div class="hobby-title lang-en">Travel & Exploring</div>
+          </div>
+
+          <!-- Hobi 5: Kişisel Gelişim -->
+          <div class="hobby-card">
+            <div class="hobby-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+              </svg>
+            </div>
+            <div class="hobby-title lang-tr">Kişisel Gelişim</div>
+            <div class="hobby-title lang-en">Personal Growth</div>
+          </div>
+
+        </div>
+
+        <!-- ======================================================================
+             ÖZEL DOKUNUŞ: ÇEVİRMENİN İNTERAKTİF DAKTİLO MASASI
+             Kullanıcı dilediği metni buraya yazabilir ve daktilo mekaniğini test edebilir.
+             ====================================================================== -->
+        <div class="typewriter-interactive-desk">
+          <div class="desk-header">
+            <div class="desk-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M7 16h10"></path>
+              </svg>
+              <span class="lang-tr">Çevirmenin Daktilo Masası (İnteraktif Deneyim)</span>
+              <span class="lang-en">The Translator's Desk (Interactive Typewriter)</span>
+            </div>
+
+            <div class="desk-sound-status">
+              <span class="lang-tr">💡 Klavyenizle yazarken daktilo tuş sesini hissedin</span>
+              <span class="lang-en">💡 Type to experience authentic mechanical keystrokes</span>
+            </div>
+          </div>
+
+          <div class="interactive-sheet">
+            <textarea 
+              id="interactiveTypewriter" 
+              class="interactive-typewriter-input" 
+              rows="3"
+              placeholder="Buraya bir cümle yazarak daktiloyu deneyin... (Örn: 'Every translation is an act of creation.')"
+            ></textarea>
+          </div>
+
+          <div class="desk-actions">
+            <button class="btn btn-secondary btn-sm" id="clearDeskBtn">
+              <span class="lang-tr">Sayfayı Temizle</span>
+              <span class="lang-en">Clear Sheet</span>
+            </button>
+            <button class="btn btn-primary btn-sm" id="sampleQuoteBtn">
+              <span class="lang-tr">Örnek Alıntı Yaz</span>
+              <span class="lang-en">Type Sample Quote</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BÖLÜM 7: İLETİŞİM
+         ========================================================================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        
+        <div class="contact-card-main">
+          
+          <div class="contact-icon-large">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5C2 7 4 5 6.5 5H18c2.2 0 4 1.8 4 4v8z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+
+          <h2 class="contact-title">
+            <span class="lang-tr">Birlikte Çalışalım</span>
+            <span class="lang-en">Let's Connect</span>
+          </h2>
+
+          <p class="contact-intro lang-tr">
+            Çeviri projeleri, İngilizce eğitimi, iş birliği ve akademik paylaşımlarınız için bana e-posta üzerinden doğrudan ulaşabilirsiniz.
+          </p>
+          <p class="contact-intro lang-en">
+            Feel free to reach out via email for translation assignments, English tutoring inquiries, or academic collaborations.
+          </p>
+
+          <!-- E-posta Kutusu & Hızlı Kopyala Butonu -->
+          <div class="email-copy-box">
+            <span class="email-text" id="emailAddress">busraakbb8@gmail.com</span>
+            
+            <button class="copy-btn" id="copyEmailBtn" title="E-posta Adresini Kopyala">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span class="lang-tr" id="copyBtnText">Kopyala</span>
+              <span class="lang-en" id="copyBtnTextEn">Copy</span>
+            </button>
+
+            <a href="mailto:busraakbb8@gmail.com" class="copy-btn" style="background-color: var(--color-coffee-accent); color: #fff; border-color: var(--color-coffee-accent);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              <span class="lang-tr">E-posta Gönder</span>
+              <span class="lang-en">Send Email</span>
+            </a>
+          </div>
+
+          <!-- Eksik Bilgiler İçin Düzenlenebilir Yer Tutucular -->
+          <div class="contact-placeholders-grid">
+            
+            <div class="placeholder-item">
+              <span class="title">LinkedIn</span>
+              <span class="slot">[buraya ekle]</span>
+            </div>
+
+            <div class="placeholder-item">
+              <span class="title">CV / Özgeçmiş</span>
+              <span class="slot">[buraya ekle]</span>
+            </div>
+
+            <div class="placeholder-item">
+              <span class="title">Telefon / WhatsApp</span>
+              <span class="slot">[buraya ekle]</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       ALT BİLGİ (FOOTER)
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-quote">
+        “Words travel worlds. Translators make the path.”
+      </div>
+      <div>
+        <strong>Büşra Akbaba</strong> &copy; <span id="currentYear"></span>
+      </div>
+      <div class="footer-note">
+        <span class="lang-tr">Minimalist ve Estetik Kişisel Web Sayfası</span>
+        <span class="lang-en">Minimalist & Aesthetic Personal Webpage</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Kopyalama Toast Bildirimi -->
+  <div class="toast-notification" id="toast">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toastMessage">E-posta adresi panoya kopyalandı!</span>
+  </div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT KODLARI
+       1. TR-EN Dil Değiştirici
+       2. Canlı Daktilo Yazı Animasyonu
+       3. Web Audio API Daktilo Mekanik Ses Simülatörü
+       4. E-posta Kopyalama & Toast Bildirimi
+       5. Mobil Menü Yönetimi
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       A. SES SİSTEMİ (Web Audio API ile Gerçek Daktilo Sesi Sentezi)
+       Herhangi bir harici ses dosyası gerekmez; tarayıcıda anında üretilir.
+       ========================================================================== */
+    let audioCtx = null;
+    let soundEnabled = true; // Varsayılan olarak ses açık
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+          audioCtx = new AudioContext();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    // Daktilo tuş vuruşu mekanik ses sentezi
+    function playTypewriterClick() {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        if (!audioCtx) return;
+
+        const now = audioCtx.currentTime;
+
+        // 1. Kısa mekanik gürültü patlaması (tuş vuruşu)
+        const bufferSize = audioCtx.sampleRate * 0.025; // 25ms
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.3));
+        }
+
+        const noise = audioCtx.createBufferSource();
+        noise.buffer = buffer;
+
+        // Bandpass filtre (metalik daktilo tınısı)
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(1400 + Math.random() * 400, now);
+        filter.Q.setValueAtTime(3.5, now);
+
+        const gain = audioCtx.createGain();
+        gain.gain.setValueAtTime(0.35, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
+
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        noise.start(now);
+      } catch (e) {
+        // Ses desteklenmiyorsa sessizce yoksay
+      }
+    }
+
+    // Daktilo satır sonu zili (ding sesi)
+    function playTypewriterBell() {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        if (!audioCtx) return;
+
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(2100, now);
+
+        gain.gain.setValueAtTime(0.18, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.45);
+      } catch (e) {}
+    }
+
+    // Ses Aç/Kapat Butonu Dinleyicisi
+    const soundToggleBtn = document.getElementById('soundToggleBtn');
+    soundToggleBtn.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      soundToggleBtn.classList.toggle('muted', !soundEnabled);
+      if (soundEnabled) {
+        initAudio();
+        playTypewriterBell();
+        showToast(currentLang === 'tr' ? 'Daktilo sesi açıldı' : 'Typewriter sound enabled');
+      } else {
+        showToast(currentLang === 'tr' ? 'Daktilo sesi kapatıldı' : 'Typewriter sound muted');
+      }
+    });
+
+    /* ==========================================================================
+       B. DİL DEĞİŞTİRİCİ (TR / EN TOGGLE)
+       ========================================================================== */
+    let currentLang = 'tr';
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    const btnOptTr = document.getElementById('btnOptTr');
+    const btnOptEn = document.getElementById('btnOptEn');
+    const typewriterInput = document.getElementById('interactiveTypewriter');
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang;
+
+      if (lang === 'tr') {
+        btnOptTr.classList.add('active');
+        btnOptEn.classList.remove('active');
+        if (typewriterInput) {
+          typewriterInput.placeholder = "Buraya bir cümle yazarak daktiloyu deneyin... (Örn: 'Every translation is an act of creation.')";
+        }
+      } else {
+        btnOptEn.classList.add('active');
+        btnOptTr.classList.remove('active');
+        if (typewriterInput) {
+          typewriterInput.placeholder = "Type a sentence here to test the typewriter... (e.g. 'Words shape the world.')";
+        }
+      }
+
+      // Dil değiştiğinde daktilo animasyonunu yeni dile göre yeniden başlat
+      startTypewriterAnimation();
+    }
+
+    langToggleBtn.addEventListener('click', () => {
+      playTypewriterClick();
+      setLanguage(currentLang === 'tr' ? 'en' : 'tr');
+    });
+
+    /* ==========================================================================
+       C. HERO DAKTİLO YAZI ANİMASYONU
+       ========================================================================== */
+    // Kullanıcının verdiği cümleler ve mesleki alıntılar
+    const typewriterTextsTR = [
+      "İngilizce Mütercim ve Tercümanlık son sınıf öğrencisi ve aktif İngilizce öğretmeni olarak çeviri, dil teknolojileri ve dil eğitiminin kesişim noktasına odaklanıyorum.",
+      "Çeviri yalnızca kelimeleri değil; anlamı, kültürü ve duyguyu da aktarma sanatıdır.",
+      "Diller arasında köprüler kuruyor, geleceğin dil teknolojilerini bugünden keşfediyorum."
+    ];
+
+    const typewriterTextsEN = [
+      "As a senior English Translation & Interpreting student and active English teacher, I focus on the intersection of translation, language technologies, and education.",
+      "Translation is not merely transferring words, but conveying meaning, culture, and context.",
+      "Bridging languages and cultures while exploring the frontiers of language technologies."
+    ];
+
+    let currentTextIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    let typewriterTimeout = null;
+
+    const typewriterTarget = document.getElementById('typewriterTarget');
+
+    function startTypewriterAnimation() {
+      if (typewriterTimeout) clearTimeout(typewriterTimeout);
+      currentCharIndex = 0;
+      isDeleting = false;
+      typewriterLoop();
+    }
+
+    function typewriterLoop() {
+      const texts = currentLang === 'tr' ? typewriterTextsTR : typewriterTextsEN;
+      const fullText = texts[currentTextIndex % texts.length];
+
+      if (isDeleting) {
+        currentCharIndex--;
+      } else {
+        currentCharIndex++;
+        // Her 2-3 harfte bir hafif tuş vuruşu sesi
+        if (currentCharIndex % 3 === 0) {
+          playTypewriterClick();
+        }
+      }
+
+      const displayedText = fullText.substring(0, currentCharIndex);
+      typewriterTarget.innerHTML = displayedText + '<span class="typewriter-cursor"></span>';
+
+      let speed = isDeleting ? 25 : 45;
+
+      if (!isDeleting && currentCharIndex === fullText.length) {
+        // Cümle tamamlandığında zil çal ve biraz bekle
+        playTypewriterBell();
+        speed = 3600; // Okuma süresi
+        isDeleting = true;
+      } else if (isDeleting && currentCharIndex === 0) {
+        isDeleting = false;
+        currentTextIndex = (currentTextIndex + 1) % texts.length;
+        speed = 600; // Yeni cümleye başlamadan önceki bekleme
+      }
+
+      typewriterTimeout = setTimeout(typewriterLoop, speed);
+    }
+
+    // Sayfa yüklendiğinde daktilo animasyonunu başlat
+    startTypewriterAnimation();
+
+    /* ==========================================================================
+       D. İNTERAKTİF DAKTİLO MASASI METİN ALANI
+       Kullanıcı klavyeden her yazdığında daktilo tuş sesi çıkar.
+       ========================================================================== */
+    if (typewriterInput) {
+      typewriterInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          playTypewriterBell();
+        } else if (e.key.length === 1 || e.key === 'Backspace' || e.key === 'Space') {
+          playTypewriterClick();
+        }
+      });
+
+      const clearDeskBtn = document.getElementById('clearDeskBtn');
+      if (clearDeskBtn) {
+        clearDeskBtn.addEventListener('click', () => {
+          typewriterInput.value = '';
+          playTypewriterClick();
+          typewriterInput.focus();
+        });
+      }
+
+      const sampleQuoteBtn = document.getElementById('sampleQuoteBtn');
+      if (sampleQuoteBtn) {
+        sampleQuoteBtn.addEventListener('click', () => {
+          const sample = currentLang === 'tr'
+            ? "“Çevirmen, iki farklı dil ve kültür dünyası arasında görünmez ama vazgeçilmez bir köprüdür.”"
+            : "“Without translation, we would be living in provinces bordering on silence.” — George Steiner";
+          
+          typewriterInput.value = '';
+          playTypewriterBell();
+          let i = 0;
+          const sampleTimer = setInterval(() => {
+            if (i < sample.length) {
+              typewriterInput.value += sample.charAt(i);
+              if (i % 2 === 0) playTypewriterClick();
+              i++;
+            } else {
+              clearInterval(sampleTimer);
+              playTypewriterBell();
+            }
+          }, 35);
+        });
+      }
+    }
+
+    /* ==========================================================================
+       E. E-POSTA KOPYALAMA VE TOAST BİLDİRİMİ
+       ========================================================================== */
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+
+    function showToast(message) {
+      toastMessage.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    if (copyEmailBtn) {
+      copyEmailBtn.addEventListener('click', () => {
+        playTypewriterBell();
+        const email = 'busraakbb8@gmail.com';
+        navigator.clipboard.writeText(email).then(() => {
+          showToast(currentLang === 'tr' ? 'E-posta panoya kopyalandı: ' + email : 'Email copied to clipboard: ' + email);
+        }).catch(() => {
+          showToast(email);
+        });
+      });
+    }
+
+    /* ==========================================================================
+       F. MOBİL MENÜ DİNAMİĞİ
+       ========================================================================== */
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const header = document.querySelector('.header');
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        playTypewriterClick();
+        header.classList.toggle('mobile-menu-open');
+      });
+
+      // Menü linkine tıklandığında mobilde menüyü kapat
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          header.classList.remove('mobile-menu-open');
+        });
+      });
+    }
+
+    /* ==========================================================================
+       G. YIL GÜNCELLEMESİ
+       ========================================================================== */
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
